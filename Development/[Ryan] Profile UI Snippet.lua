@@ -608,14 +608,16 @@ A.Data.ProfileUI                                     = {
             LayoutOptions = LayoutConfigOptions,
              {
                 {
-                    E = "Checkbox",
+                    E                 = "Slider",
+                    MIN             = 5,
+                    MAX                 = 20,
                     DB = "BladeRushRange",
-                    DBV = true,
+                    DBV = 5,
                     L = {
-                        ANY = A.GetSpellInfo(271877) .. " in Melee Only",
+                        ANY = A.GetSpellInfo(271877) .. " @ yards:",
                     },
                     TT = {
-                        ANY = "Limit the range of " .. A.GetSpellInfo(271877) .."\n\nRight click: Create macro",
+                        ANY = "Limit the range of " .. A.GetSpellInfo(271877) .."\n5yds no movement\n>8yds movement\n\nRight click: Create macro",
                     },
                     M = {},
                 },

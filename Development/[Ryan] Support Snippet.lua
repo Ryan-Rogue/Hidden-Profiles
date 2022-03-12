@@ -167,6 +167,68 @@ IsNotCCAble= {
     [180865] = true,
     [178731] = true,
     [175730] = true,
+	[185685] = true,
+	[181850] = true,
+	[179842] = true,
+	[183764] = true,
+	[185032] = true,
+	[185363] = true,
+	[179821] = true,
+	[183497] = true,
+	[184954] = true,
+	[179733] = true,
+	[185537] = true,
+	[181395] = true,
+	[184742] = true,
+	[165913] = true,
+	[181244] = true,
+	[177269] = true,
+	[184522] = true,
+	[184530] = true,
+	[180433] = true,
+	[185680] = true,
+	[184520] = true,
+	[179837] = true,
+	[183499] = true,
+	[183501] = true,
+	[175646] = true,
+	[182466] = true,
+	[181011] = true,
+	[180773] = true,
+	[179269] = true,
+	[175806] = true,
+	[184910] = true,
+	[182311] = true,
+	[180429] = true,
+	[183398] = true,
+	[184603] = true,
+	[184908] = true,
+	[178508] = true,
+	[180091] = true,
+	[183438] = true,
+	[176705] = true,
+	[184651] = true,
+	[184659] = true,
+	[175663] = true,
+	[185683] = true,
+	[176556] = true,
+	[184911] = true,
+	[179334] = true,
+	[176555] = true,
+	[176563] = true,
+	[178171] = true,
+	[179006] = true,
+	[177808] = true,
+	[178392] = true,
+	[154586] = true,
+	[156339] = true,
+	[180495] = true,
+	[156340] = true,
+	[183495] = true,
+
+
+
+
 --Included
     [000089] = true,
     [005709] = true,
@@ -1351,7 +1413,7 @@ Factory[4].RyanInterrupts = StdUi:tGenerateMinMax({
             [331743] = { useKick = false, useCC = true, useRacial = true                            }, --Bucking Rampage;           CC	
             [322450] = { useKick = true, useCC = false, useRacial = false                           }, --Consumption;      			Kick
             [322767] = { useKick = true, useCC = true, useRacial = true                             }, --Spirit Bolt;    			Kick+CC 			
-            [324987] = { useKick = false, useCC = true, useRacial = true                            }, --Mistveil Bite;           	CC			
+            [324987] = { useKick = false, useCC = true, useRacial = true, ignoreInterval = true,    }, --Mistveil Bite;           	CC			
             [325021] = { useKick = false, useCC = true, useRacial = true                            }, --Mistveil Tear;           	CC				
             -- Necrotic Wake
             [320462] = { useKick = true, useCC = false, useRacial = false                           }, --Necrotic Bolt;             Kick            
@@ -1435,12 +1497,46 @@ Factory[4].RyanInterrupts = StdUi:tGenerateMinMax({
             [357188] = { useKick = true, useCC = false, useRacial = false                           }, --Double Technique          Kick
             [347150] = { useKick = true, useCC = false, useRacial = false                           }, --Triple Technique          Kick
             [358131] = { useKick = true, useCC = false, useRacial = false                           }, --Lightning Nova            Kick
+            [356031] = { useKick = true, useCC = false, useRacial = false                           }, --Statis Beam            Kick
+            [355930] = { useKick = true, useCC = false, useRacial = false                           }, --spark burn            Kick
+            [355934] = { useKick = true, useCC = false, useRacial = false                           }, --hardlight barrier            Kick           
+            [357029] = { useKick = true, useCC = false, useRacial = false                           }, --Hyperlight Bomb            Kick
+			[357229] = { useKick = false, useCC = true, useRacial = true                            }, --Chronolight Enhancer			CC
+            [350922] = { useKick = true, useCC = false, useRacial = false                           }, --Menacing Shout            Kick
+            [353835] = { useKick = true, useCC = false, useRacial = false                           }, --Suppression            Kick
+            [347775] = { useKick = true, useCC = false, useRacial = false                           }, --Spam Filter           Kick
+            [347721] = { useKick = false, useCC = true, useRacial = true, ignoreInterval = true,    }, --Open Cage				CC            
+            [355640] = { useKick = false, useCC = true, useRacial = true, ignoreInterval = true,    }, --Phalanx Field				CC             
+            [355641] = { useKick = true, useCC = false, useRacial = false                           }, --Scintillate           Kick           
+            [355642] = { useKick = true, useCC = false, useRacial = false                           }, --Hyperlight Salvo           Kick            
+            [349934] = { useKick = true, useCC = false, useRacial = false                           }, --Flagellation Protocol          Kick           
+			[355057] = { useKick = false, useCC = true, useRacial = true                            }, --Cry of Mrrggllrrgg			CC           
+            [355225] = { useKick = true, useCC = false, useRacial = false                           }, --Waterbolt         Kick  
+			[355132] = { useKick = false, useCC = true, useRacial = true                            }, --Invigorating Fish Stick		CC              
+			[347015] = { useKick = false, useCC = true, useRacial = true                            }, --Empowered Defense		CC              
+            [352347] = { useKick = true, useCC = false, useRacial = false                           }, --Valorous Bolt        Kick 
+			[356133] = { useKick = false, useCC = true, useRacial = true                            }, --Super Saison		CC    
+			[358344] = { useKick = false, useCC = true, useRacial = true                            }, --Disruptive Shout		CC    
+			[356162] = { useKick = false, useCC = true, useRacial = true                            }, --Super Saison		CC  
+            [357260] = { useKick = true, useCC = false, useRacial = false, ignoreInterval = true,   }, --Unstable Rift        Kick 
+            [351119] = { useKick = true, useCC = false, useRacial = false, ignoreInterval = true,   }, --Shuriken Blitz        Kick 
+            [357284] = { useKick = true, useCC = true, useRacial = true,   ignoreInterval = true,   }, --reinvigorate       Kick+cc 
+
+            --Spam Filter kick maybe
+            --Junk Mail kick maybe
+
+
             --Sanctum of Domination
             [350283] = { useKick = true, useCC = false, useRacial = false                           }, -- Kick Soulful Blast
             [350286] = { useKick = true, useCC = false, useRacial = false, ignoreInterval = true,   }, -- Kick Song of Dissolution
             [351779] = { useKick = true, useCC = false, useRacial = false                           }, -- Kick    --Agonizing Nova
             [348428] = { useKick = true, useCC = false, useRacial = false                           }, -- Kick Piercing Wail
             [355540] = { useKick = true, useCC = false, useRacial = false, ignoreInterval = true,   }, -- Kick    --Ruin
+            [362383] = { useKick = true, useCC = false, useRacial = false, ignoreInterval = true,   }, -- Kick    --anima-bolt
+            [360259] = { useKick = true, useCC = false, useRacial = false, ignoreInterval = true,   }, -- Kick    --gloom-bolt kick
+
+
+
 
             --[[ Templates
             [] = { useKick = false, useCC = false, useRacial = false}    , -- Block
