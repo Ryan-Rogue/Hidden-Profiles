@@ -167,6 +167,10 @@ Action[ACTION_CONST_ROGUE_OUTLAW] = {
     ShadowGraspTotem = Create({ Type = "Trinket", ID = 179356,Hidden = true}),
     Mistcaller = Create({ Type = "Trinket", ID = 178715,Hidden = true}),    
     EarthbreakersImpact = Create({ Type = "Trinket", ID = 188264,Hidden = true}),
+    CacheOfAcquiredTreasures = Create({ Type = "Trinket", ID = 188265,Hidden = true}),
+    AcquiredSword = Create({ Type = "Spell", ID = 368657, Hidden = true}),
+    AcquiredAxe = Create({ Type = "Spell", ID = 368656, Hidden = true}),
+    AcquiredWand = Create({ Type = "Spell", ID = 368654, Hidden = true}),
     --Gladiator Badges/Medallions
     DreadGladiatorsMedallion = Create({ Type = "Trinket", ID = 161674}),
     DreadCombatantsInsignia = Create({ Type = "Trinket", ID = 161676}),
@@ -203,6 +207,7 @@ local Temp = {
         [A.ShadowGraspTotem.ID] = true,
         [A.Mistcaller.ID] = true,
         [A.EarthbreakersImpact.ID] = true,
+        [A.CacheOfAcquiredTreasures.ID] = true,
     },
 }; do
     -- Push IsSlotTrinketBlocked
@@ -293,6 +298,9 @@ local function UseItems(unitID)
     end
     if A.EarthbreakersImpact:IsReady(unitID) and (((Unit(unitID):TimeToDie() > 20 and Unit(unitID):HealthDeficitPercent() ~= 0) or Unit(unitID):IsBoss()) or MultiUnits:GetByRange(8) > 3) then
         return A.EarthbreakersImpact
+    end
+    if A.CacheOfAcquiredTreasures:IsReady(unitID) and Unit(player):HasBuffs(A.AcquiredAxe.ID) ~= 0 and (Unit(unitID):TimeToDie() > 20 or Unit(unitID):IsBoss()) then
+        return A.CacheOfAcquiredTreasures
     end
 end
 local function EchoingBuffMatch()
@@ -1201,8 +1209,8 @@ A[3] = function(icon)
         if Interrupts() then return true end
         --DEFENSIVES
         if Defensives() then return true end
-        --stop DPS on sylvanas, The Nine, Painsmith immunes, zy'mox, So'leah, Hylbrande
-        if Unit(unitID):HasBuffs(350857, 350157, 359033, 367573, 351086, 347097 ) > 0 then return false end
+        --stop DPS on sylvanas, The Nine, Painsmith immunes, zy'mox, So'leah, Hylbrande, Anduin
+        if Unit(unitID):HasBuffs(350857, 350157, 359033, 367573, 351086, 347097, 362505) > 0 then return false end
         -- OPENER
         if (Player:IsStealthed() or LastPlayerCastID == A.Vanish.ID or LastPlayerCastID == A.Stealth.ID) and not inCombat and GetToggle(2, "Opener") ~= "OFF" and Opener() then return true end
         --StealthCDs allow for in combat stealth CDs (RtB, MfD, and Ambush) but if vanish lasts so long you gain the stealth buff, we will just reopen instead which will also use stealth CDs based on user Opener Settings
