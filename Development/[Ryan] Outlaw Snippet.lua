@@ -190,7 +190,7 @@ Action[ACTION_CONST_ROGUE_OUTLAW] = {
 --Action:CreateCovenantsFor(ACTION_CONST_ROGUE_OUTLAW)
 --Action:CreateEssencesFor(ACTION_CONST_ROGUE_OUTLAW)
 local A = setmetatable(Action[ACTION_CONST_ROGUE_OUTLAW], { __index = Action })
-local player= "player"
+local player = "player"
 local Temp = {
     TotalAndPhys = {"TotalImun", "DamagePhysImun"},
     TotalAndPhysKick = {"TotalImun", "DamagePhysImun", "KickImun"},
@@ -249,12 +249,7 @@ local DefensiveCasts = {
     [346742] = A.Feint, --Fan Mail, Tazavesh
     [350796] = A.Feint, --Hyperlight Spark, Tazavesh
 }
-local EchoingBuffs = {
-    [2] = Unit(player):HasBuffs(323558,_,true) > 0,
-    [3] = Unit(player):HasBuffs(323559,_,true) > 0,
-    [4] = Unit(player):HasBuffs(323560,_,true) > 0,
-    [5] = Unit(player):HasBuffs(354838,_,true) > 0,
-}
+
 ------------------------------------------------------------
 --Ryan Generic Functions
 ------------------------------------------------------------
@@ -304,7 +299,15 @@ local function UseItems(unitID)
     end
 end
 local function EchoingBuffMatch()
+
+    local EchoingBuffs = {
+        [2] = Unit(player):HasBuffs(323558,_,true) > 0,
+        [3] = Unit(player):HasBuffs(323559,_,true) > 0,
+        [4] = Unit(player):HasBuffs(323560,_,true) > 0,
+        [5] = Unit(player):HasBuffs(354838,_,true) > 0,
+    }
     if EchoingBuffs[Player:ComboPoints()] then return true end
+    return false
 end
 EchoingBuffMatch = A.MakeFunctionCachedStatic(EchoingBuffMatch)
 local function ReTabTarget()
@@ -393,10 +396,7 @@ A[3] = function(icon)
 
 
         
---]]
-
-
-
+    --]]
 
     -- Rotations
     function EnemyRotation(unitID)
