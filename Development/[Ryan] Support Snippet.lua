@@ -36,6 +36,11 @@ KeepTarget	= {
     [164363] = true, --Undying Stonefiend --HoA
     [176581] = true, --Spiked Ball --SoD Painsmith
     [176523] = true, --Painsmith --SoD Painsmith
+    [164255] = true, --Globgrog --PF
+    [164362] = true, --Slimey Morsel --PF
+    [171887] = true, --Slimy Smorgasbord --PF
+    [168882] = true, --Fleeting Manifestation,, --SD
+    [162100] = true, --Kryxis the Voracious --SD    
     --[] = true, --
     --[] = true, --
     --[] = true, --
@@ -54,6 +59,17 @@ IgnoreNameplates = {
     [169498] = true, --Plague Bomb, --PF
     [176581] = true, --Spiked Ball --SoD Painsmith
     [176523] = true, --Painsmith --SoD Painsmith
+    [164255] = true, --Globgrog --PF
+    [164362] = true, --Slimey Morsel --PF
+    [171887] = true, --Slimy Smorgasbord --PF
+    [162100] = true, --Kryxis the Voracious --SD
+    [168882] = true, --Fleeting Manifestation,, --SD    
+    --[] = true, --
+    --[] = true, --
+    --[] = true, --
+    --[] = true, --
+    --[] = true, --
+    --[] = true, --
 }
 
 --this table is used to identify casts that are a cast followed by a channel and we only want to interrupt the channel
@@ -225,8 +241,13 @@ IsNotCCAble= {
 	[180495] = true,
 	[156340] = true,
 	[183495] = true,
-
-
+	[182158] = true,
+	[181224] = true,
+	[181954] = true,
+	[178563] = true,
+	[183992] = true,
+	[173840] = true,
+	[183463] = true,
 
 
 --Included
