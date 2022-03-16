@@ -219,7 +219,15 @@ local Temp = {
     end
 end
 
-
+local bossBuffs = {
+    350857, --sylvanas
+    350157, --The Nine
+    359033, --Painsmith immunes
+    367573, --zy'mox
+    351086, --So'leah
+    347097, --Hylbrande
+    362505, --Anduin
+}
 
 local DefensiveCasts = {
     [328177] = A.Feint, --Fungistorm, PF, Trash
@@ -302,10 +310,10 @@ end
 local function EchoingBuffMatch()
 
     local EchoingBuffs = {
-        [2] = Unit(player):HasBuffs(323558,_,true) > 0,
-        [3] = Unit(player):HasBuffs(323559,_,true) > 0,
-        [4] = Unit(player):HasBuffs(323560,_,true) > 0,
-        [5] = Unit(player):HasBuffs(354838,_,true) > 0,
+        [2] = Unit(player):HasBuffs(323558,false,true) > 0,
+        [3] = Unit(player):HasBuffs(323559,false,true) > 0,
+        [4] = Unit(player):HasBuffs(323560,false,true) > 0,
+        [5] = Unit(player):HasBuffs(354838,false,true) > 0,
     }
     if EchoingBuffs[Player:ComboPoints()] then return true end
     return false
@@ -503,7 +511,7 @@ A[3] = function(icon)
         local finish_condition = Player:ComboPoints() >= Player:ComboPointsMax() - extraBSCP - (boolnumber(Unit(player):HasBuffs(A.Opportunity.ID) ~= 0) * boolnumber(A.QuickDraw:IsTalentLearned())) or effective_combo_points >= Player:ComboPointsMax() 
         local useBossTimers = BossMods:HasAnyAddon()==true and GetToggle(1, "BossMods") and not inCombat and Unit(unitID):IsBoss() and (A.InstanceInfo.ID == 2450 or A.InstanceInfo.ID == 2296 or A.InstanceInfo.ID == 2481) --CN,  SoD, SotFO only
         local CloakofShadows = GetToggle(2, "CloakofShadows")
-        local paranoia = Unit(player):HasDeBuffs(A.Paranoia.ID, _, true) ~= 0
+        local paranoia = Unit(player):HasDeBuffs(A.Paranoia.ID, false, true) ~= 0
         
         if (A.BetweenTheEyes:IsReady(unitID) and effective_combo_points < 5) then finish_condition = false end --always use max CP for BTE
 
@@ -935,7 +943,7 @@ A[3] = function(icon)
         --    local cloakingCasts = { 
         --        322486, --Overgrowth, Mists
         --        }
-        -- A.MultiUnits:GetByRangeCasting(_, 1, _, cloakingCasts)
+        -- A.MultiUnits:GetByRangeCasting(false, 1, false, cloakingCasts)
         -- @return number
 	    -- @usage A.MultiUnits:GetByRangeCasting(@number, @number, @boolean, @table or @spellName or @spellID)
 	    -- All options are optimal, spells can be table { 123, "Frost Bolt" } or just single spell without table and it can be noted as spellName, spellID or both
@@ -974,7 +982,7 @@ A[3] = function(icon)
         end
         --bursting cloak
 
-        if Unit(player):HasDeBuffsStacks(240443, _, true) >= 6
+        if Unit(player):HasDeBuffsStacks(240443, false, true) >= 6
         then
             return A.CloakofShadows:Show(icon)
         end
@@ -1394,7 +1402,7 @@ A[3] = function(icon)
         --Functional Rotation Calls             --
         ------------------------------------------
         --Master Assassian Rotation during MA
-        if A.MarkoftheMasterAssassin:HasLegendaryCraftingPower() and A.KillingSpree:IsTalentLearned() and A.Vanish:GetCooldown() >= 103 and Unit(player):HasBuffs(A.MasterAssassinsMark.ID) ~= 0 and MasterAss() then
+        if A.MarkoftheMasterAssassin:HasLegendaryCraftingPower() and A.KillingSpree:IsTalentLearned() and A.Vanish:GetCooldown() >= 80 and Unit(player):HasBuffs(A.MasterAssassinsMark.ID) ~= 0 and MasterAss() then
             return true
         end
         --INTERRUPTS
@@ -1402,7 +1410,7 @@ A[3] = function(icon)
         --DEFENSIVES
         if Defensives() then return true end
         --stop DPS on sylvanas, The Nine, Painsmith immunes, zy'mox, So'leah, Hylbrande, Anduin
-        if Unit(unitID):HasBuffs({350857, 350157, 359033, 367573, 351086, 347097, 362505}, _, true) > 0 then return false end
+        if Unit(unitID):HasBuffs(bossBuffs, false, true) > 0 then return true end
         -- OPENER
         if (Player:IsStealthed() or LastPlayerCastID == A.Vanish.ID or LastPlayerCastID == A.Stealth.ID) and not inCombat and GetToggle(2, "Opener") ~= "OFF" and Opener() then return true end
         --StealthCDs allow for in combat stealth CDs (RtB, MfD, and Ambush) but if vanish lasts so long you gain the stealth buff, we will just reopen instead which will also use stealth CDs based on user Opener Settings
