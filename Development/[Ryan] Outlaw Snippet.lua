@@ -1438,7 +1438,7 @@ A[3] = function(icon)
     end
     
     --Use Mistcaller if out of combat with other poisons. before stealth
-    if A.Mistcaller:IsReady(player, true) and Unit(player):HasBuffs(A.MistcallerBuffVers.ID, A.MistcallerBuffCrit.ID, A.MistcallerBuffMastery.ID, A.MistcallerBuffHaste.ID) == 0 and Player:GetStance() == 0 and Unit(player):CombatTime() == 0 and not IsMounted() then
+    if A.Mistcaller:IsReady(player, true) and Unit(player):HasBuffs({A.MistcallerBuffVers.ID, A.MistcallerBuffCrit.ID, A.MistcallerBuffMastery.ID, A.MistcallerBuffHaste.ID}, true, true) == 0 and Player:GetStance() == 0 and Unit(player):CombatTime() == 0 and not IsMounted() then
         return A.Mistcaller:Show(icon)
     end
     
