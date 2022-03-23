@@ -74,22 +74,16 @@ IgnoreNameplates = {
 
 --this table is used to identify casts that are a cast followed by a channel and we only want to interrupt the channel
 Channels = {
-    --[328177] = true, --Fungistorm, PF, Trash --after testing i dont believe Fungistorm is recast if stopped before channel
-    --[330423] = true, --Fungistorm, PF, Trash
-    --[328176] = true, --Fungistorm, PF, Trash
-    --[330422] = true, --Fungistorm, PF, Trash
-    --[340481] = true, --Fungistorm, PF, Trash
-    --[340633] = true, --Fungistorm, PF, Trash
     [336451] = true, --Bulwark of Maldraxxus, PF, Trash
     [336449] = true, --Bulwark of Maldraxxus, PF, Trash
     [331718] = true, --Spear Flurry --Mists
     [332671] = true, --Bladestorm --DoS
     [330810] = true, --Bind Soul -- TOP
     [334653] = true, --Engorge --SD
-
 }
 --Table used to identify instance.ID for Ryan's Interrupts
 IsInAnInstance = {
+    --Dungeons
     [2284] = true,--Sanguine Depths
     [2285] = true,--Spires of Ascension
     [2286] = true,--The Necrotic Wake
@@ -98,9 +92,11 @@ IsInAnInstance = {
     [2290] = true,--Mists of Tirna Scithe
     [2291] = true,--De Other Side
     [2293] = true,--Theater of Pain
-    [2296] = true,--Castle Nathria
     [2441] = true,--Tazavesh
+    --Raids
+    [2296] = true,--Castle Nathria
     [2450] = true,--Sanctum of Domination
+    [2481] = true,--Sepulcher of the First Ones 
 }
 --Used to dertmine Enemy NPC_IDs (from wowhead) that can not be CC'd ever
 IsNotCCAble= {
@@ -119,7 +115,7 @@ IsNotCCAble= {
     [176581] = true, --Spiked Ball
     [175731] = true, --Guardian of the First Ones
     [179390] = true, --Fatescribe Roh-Kalo
-    [15990] = true, --Kel'Thuzad 
+    [15990] = true,  --Kel'Thuzad 
     [180473] = true, --Unstoppable Abomination --todo  verify
     [180474] = true, --Soul Reaver
     [176929] = true, --Remnant of Kel'Thuzad
@@ -248,8 +244,36 @@ IsNotCCAble= {
 	[183992] = true,
 	[173840] = true,
 	[183463] = true,
-
-
+	[183745] = true,
+	[183714] = true,
+	[180746] = true,
+	[183953] = true,
+	[181398] = true,
+	[181399] = true,
+	[184735] = true,
+	[181546] = true,
+	[183737] = true,
+	[182071] = true,
+	[181548] = true,
+	[183596] = true,
+	[184533] = true,
+	[183406] = true,
+	[183439] = true,
+	[185154] = true,
+	[181360] = true,
+	[181249] = true,
+	[181551] = true,
+	[184409] = true,
+	[182169] = true,
+	[185155] = true,
+	[183722] = true,
+	[181549] = true,
+	[182045] = true,
+	[180348] = true,
+	[175576] = true,
+	[178963] = true,
+	[180924] = true,
+	[183688] = true,
 --Included
     [000089] = true,
     [005709] = true,
@@ -1404,7 +1428,7 @@ Factory[4].RyanInterrupts = StdUi:tGenerateMinMax({
             [328729] = { useKick = true, useCC = false, useRacial = false,                          }, --Dark Lotus;         		Kick	
             [332605] = { useKick = true, useCC = true, useRacial = true,                            }, --Hex;                 		Kick+CC
             [332234] = { useKick = true, useCC = true, useRacial = true,                            }, --Essential Oil;        		Kick+CC
-			[334664] = { useKick = false, useCC = true, useRacial = true,                           }, --Frightened Cries;         CC	
+			[334664] = { useKick = false, useCC = true, useRacial = true, ignoreInterval = true,    }, --Frightened Cries;          CC	
             [331379] = { useKick = true, useCC = false, useRacial = false,                          }, --Lubricate;        		Kick+CC
 			[332156] = { useKick = false, useCC = true, useRacial = true,                           }, --Spinning Up;          	CC
             [332705] = { useKick = true, useCC = false, useRacial = false,                          }, --Smite;         			Kick			
@@ -1506,17 +1530,13 @@ Factory[4].RyanInterrupts = StdUi:tGenerateMinMax({
             [320300] = { useKick = true, useCC = false, useRacial = false                           }, --Necromantic Bolt;			Kick
             [320120] = { useKick = true, useCC = false, useRacial = false                           }, --Plague Bolt;				Kick			
             [341977] = { useKick = true, useCC = true, useRacial = true, ignoreInterval = true,     }, --Meat Shield;  				Kick+CC			
-			-- Castle Nathria
-            [325590] = { useKick = true, useCC = false, useRacial = false                           }, --Scornful Blast;			Kick
-            [328254] = { useKick = true, useCC = false, useRacial = false                           }, --Shattering Ruby;			Kick
-            [333002] = { useKick = true, useCC = false, useRacial = false                           }, --Vulgar Brand;				Kick
-            [337110] = { useKick = true, useCC = false, useRacial = false                           }, --Dreadbolt Volley;			Kick
+
             --Tazavesh
             [354297] = { useKick = true, useCC = false, useRacial = false                           }, --Hyperlight Bolt           Kick
             [356537] = { useKick = true, useCC = false, useRacial = false                           }, --Empowered Glyph of Restraint         Kick
             [357404] = { useKick = true, useCC = false, useRacial = false                           }, --Dischordant Song          Kick
-            [357188] = { useKick = true, useCC = false, useRacial = false                           }, --Double Technique          Kick
-            [347150] = { useKick = true, useCC = false, useRacial = false                           }, --Triple Technique          Kick
+            [357188] = { useKick = true, useCC = false, useRacial = false, ignoreInterval = true,   }, --Double Technique          Kick
+            [347150] = { useKick = true, useCC = false, useRacial = false, ignoreInterval = true,   }, --Triple Technique          Kick
             [358131] = { useKick = true, useCC = false, useRacial = false                           }, --Lightning Nova            Kick
             [356031] = { useKick = true, useCC = false, useRacial = false                           }, --Statis Beam            Kick
             [355930] = { useKick = true, useCC = false, useRacial = false                           }, --spark burn            Kick
@@ -1533,20 +1553,24 @@ Factory[4].RyanInterrupts = StdUi:tGenerateMinMax({
             [349934] = { useKick = true, useCC = false, useRacial = false                           }, --Flagellation Protocol          Kick           
 			[355057] = { useKick = false, useCC = true, useRacial = true                            }, --Cry of Mrrggllrrgg			CC           
             [355225] = { useKick = true, useCC = false, useRacial = false                           }, --Waterbolt         Kick  
-			[355132] = { useKick = false, useCC = true, useRacial = true                            }, --Invigorating Fish Stick		CC              
+			[355132] = { useKick = false, useCC = true, useRacial = true,  ignoreInterval = true,   }, --Invigorating Fish Stick		CC              
 			[347015] = { useKick = false, useCC = true, useRacial = true                            }, --Empowered Defense		CC              
             [352347] = { useKick = true, useCC = false, useRacial = false                           }, --Valorous Bolt        Kick 
 			[356133] = { useKick = false, useCC = true, useRacial = true                            }, --Super Saison		CC    
 			[358344] = { useKick = false, useCC = true, useRacial = true                            }, --Disruptive Shout		CC    
 			[356162] = { useKick = false, useCC = true, useRacial = true                            }, --Super Saison		CC  
             [357260] = { useKick = true, useCC = false, useRacial = false, ignoreInterval = true,   }, --Unstable Rift        Kick 
-            [351119] = { useKick = true, useCC = false, useRacial = false, ignoreInterval = true,   }, --Shuriken Blitz        Kick 
+            [351119] = { useKick = true, useCC = false, useRacial = false, ignoreInterval = true,   }, --Shuriken Blitz     Kick 
             [357284] = { useKick = true, useCC = true, useRacial = true,   ignoreInterval = true,   }, --reinvigorate       Kick+cc 
-
+            [180336] = { useKick = false, useCC = true, useRacial = true,  ignoreInterval = true,   }, --Lightshard Retreat CC                
             --Spam Filter kick maybe
             --Junk Mail kick maybe
-
-
+            
+			-- Castle Nathria
+            [325590] = { useKick = true, useCC = false, useRacial = false                           }, --Scornful Blast;			Kick
+            [328254] = { useKick = true, useCC = false, useRacial = false                           }, --Shattering Ruby;			Kick
+            [333002] = { useKick = true, useCC = false, useRacial = false                           }, --Vulgar Brand;				Kick
+            [337110] = { useKick = true, useCC = false, useRacial = false                           }, --Dreadbolt Volley;			Kick
             --Sanctum of Domination
             [350283] = { useKick = true, useCC = false, useRacial = false                           }, -- Kick Soulful Blast
             [350286] = { useKick = true, useCC = false, useRacial = false, ignoreInterval = true,   }, -- Kick Song of Dissolution
@@ -1555,9 +1579,13 @@ Factory[4].RyanInterrupts = StdUi:tGenerateMinMax({
             [355540] = { useKick = true, useCC = false, useRacial = false, ignoreInterval = true,   }, -- Kick    --Ruin
             [362383] = { useKick = true, useCC = false, useRacial = false, ignoreInterval = true,   }, -- Kick    --anima-bolt
             [360259] = { useKick = true, useCC = false, useRacial = false, ignoreInterval = true,   }, -- Kick    --gloom-bolt kick
-
-
-
+            --sepulcher
+            [364030] = { useKick = true, useCC = false, useRacial = false                           }, -- Kick --Debilitating Ray
+            [365682] = { useKick = false, useCC = true, useRacial = true                            }, -- CC -- Massive Blast
+            
+            
+            --Season 3 Affix
+            [366566] = { useKick = true, useCC = false, useRacial = false, ignoreInterval = true,   }, -- Kick    --Burst           
 
             --[[ Templates
             [] = { useKick = false, useCC = false, useRacial = false}    , -- Block

@@ -171,7 +171,7 @@ local SliderMarginOptions = { margin = { top = 10 } }
 local LayoutConfigOptions = { gutter = 6, padding = { left = 5, right = 5 } }
 A.Data.ProfileEnabled[A.CurrentProfile]             = true
 A.Data.ProfileUI                                     = {
-    DateTime = "v15.4 (15.3.2022) #Paranoia",
+    DateTime = "v16 (22.3.2022) #BattlePots",
     [2] = {
         [ACTION_CONST_ROGUE_SUBTLETY] = {
             LayoutOptions = LayoutConfigOptions,
@@ -711,6 +711,7 @@ A.Data.ProfileUI                                     = {
                     },
                 },
             },
+
            --[[ { -- Padding
                 {
                     E                 = "Header",
@@ -802,14 +803,56 @@ A.Data.ProfileUI                                     = {
                     M                 = {},
                 },
             },           
-           
-           
-           
-           
-           
-           
-           
-           
+            {
+                
+                --[[
+                {
+                    E = "Dropdown",
+                    OT = {
+                        { text = "OFF", value = "OFF" },
+                        { text = "Uhr", value = "Uhr" },
+                        { text = "Wo", value = "Wo" },
+                        { text = "Vy", value = "Vy" },                        
+                    },
+                    DB = "SeasonAffix",
+                    DBV = "OFF",
+                    L = {
+                        ANY = "Season Affix Target",
+                    },
+                    TT = {
+                        ANY = "Select the Season Affix the rotation should auto target\n\nRight click: Create macro",
+                    },
+                    M = {},
+                },
+
+                --]]
+
+                {
+
+                },
+                {
+                    E = "Dropdown",
+                    OT = {
+                        { text = "Never", value = 0 },
+                        { text = "Raid", value = 1 },
+                        { text = "M+", value = 2 },
+                        { text = "Raid & M+", value = 3 },
+                        { text = "Everywhere", value = 4 },                  
+                    },
+                    DB = "BattlePot",
+                    DBV = 0,
+                    L = {
+                        ANY = "Battle Pot /w Lust:",
+                    },
+                    TT = {
+                        ANY = "Battlepot With Lust\n\nRequires Potion checked on General tab\n\nRight click: Create macro",
+                    },
+                    M = {},
+                },
+
+
+
+            },
             { -- [2] Poisons
                 {
                     E                 = "Header",
