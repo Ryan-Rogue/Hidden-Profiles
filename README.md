@@ -27,7 +27,4 @@ Pre-Pull Boss Mods Support:
     Uses Action Tab “Boss Timers” checkbox  
     **Will stop the rotation until pull timer is used**  
 
-**Donations accepted here:**   
-paypal.me/rtm2017
-
 **DM me feature requests! I do not accept paid features**
